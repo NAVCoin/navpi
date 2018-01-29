@@ -144,8 +144,8 @@ if ($currentWallet == NavCoin){
         <?php if ($currentWallet == NavCoin): ?>
 		<?php
 		echo "<p>Your estimated time to earn rewards is ";
-		if ($days) echo $days . " day" . (($days > 1)?"s ":" ");
-		if ($days || $hours) echo $hours . " hour" . (($hours)?"s ":" ");
+		if ($days) echo $days . " day" . ($days > 1?"s ":" ");
+		if ($days || $hours) echo $hours . " hour" . ($hours?"s ":" ");
 		echo $minutes . " minutes";
 		?>
 	<?php endif; ?>
