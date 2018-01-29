@@ -142,16 +142,12 @@ if ($currentWallet == NavCoin){
 		<?php echo "<p>Your stake weight is {$x['stakeweight']}.</p>"?>
 	<?php endif; ?>
         <?php if ($currentWallet == NavCoin): ?>
-		<?php echo "<p>Your estimated time to earn rewards is "?>
-		<?php if ($hours < 1 && $days < 1)echo "$minutes minutes.</p>"?>
-		<?php if ($hours == 1 && $days < 1)echo "$hours hour $minutes minutes.</p>"?>
-		<?php if ($hours > 1 && $days < 1)echo "$hours hours $minutes minutes.</p>"?>
-		<?php if ($hours == 0 && $days == 1)echo "$days day $hours hour $minutes minutes"?>
-		<?php if ($hours == 1 && $days == 1)echo "$days day $hours hours $minutes minutes"?>
-		<?php if ($hours < 1 && $days == 1)echo "$days day $hours hours $minutes minutes"?>
-		<?php if ($hours == 0 && $days > 1)echo "$days days $hours hours $minutes minutes"?>
-		<?php if ($hours == 1 && $days > 1)echo "$days days $hours hour $minutes minutes"?>
-		<?php if ($hours > 1 && $days > 1)echo "$days days $hours hours $minutes minutes"?>
+		<?php
+		echo "<p>Your estimated time to earn rewards is ";
+		if ($days) echo $days . " day" . (($days > 1)?"s ":" ");
+		if ($days || $hours) echo $hours . " hour" . (($hours)?"s ":" ");
+		echo $minutes . " minutes";
+		?>
 	<?php endif; ?>
 		</p></p>
 	<?php if($currentVersion != $newestVersion):?>
