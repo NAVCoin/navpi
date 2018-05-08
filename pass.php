@@ -4,10 +4,10 @@ $encryptedpasswd= getpass() ;
 $showlogin = true ;
 // check cookie 
 
-if (isset($_COOKIE['logincheck'])) 
+if (isset($_SESSION['logincheck'])) 
 {
 
-	if (md5($encryptedpasswd) == $_COOKIE['logincheck'])
+	if (md5($encryptedpasswd) == $_SESSION['logincheck'])
 	{
 	$showlogin = false ;
 	}
@@ -23,7 +23,7 @@ if (isset($_POST['pass']) )
 	else
 	{
 	$showlogin= false; // the pass is good
-	setcookie("logincheck",md5($encryptedpasswd),time()+3600);// expire in 1 hour
+	$_SESSION['logincheck'] = md5($encryptedpasswd);
 	}
 }
 else
